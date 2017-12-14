@@ -14,6 +14,10 @@ import {
 
 } from 'react-native';
 import MyButton from './src/component/MyButton'
+import FirstScreen from './src/component/FirstScreen'
+import SecondScreen from './src/component/SecondScreen'
+
+import {StackNavigator} from 'react-navigation'
 
 
 const instructions = Platform.select({
@@ -23,64 +27,12 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
 
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          欢迎来到分治!
-        </Text>
-        <Text style={styles.instructions}>
-          拆解句子结构，实现分而治之！
-        </Text>
-
-        <MyButton text="登录" onPressMethod={()=>{alert("你点击了确定")}}></MyButton>
-        <MyButton text="注册" onPressMethod={()=>{alert("你点击了注册")}}></MyButton>
-
-        <TouchableOpacity
-          style = {styles.btn}
-          onPress={()=>{alert("你点击了主页")}}>
-          <Text style ={{textAlign:"center"}}>主页</Text>
-        </TouchableOpacity>
-
-
-      </View>
-    );
+const App = StackNavigator(
+  {
+    First :{screen:FirstScreen},
+    Second :{screen:SecondScreen}
   }
-}
+)
 
-const styles = StyleSheet.create({
-
-
-
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  btn: {
-    width:120,
-    height:40,
-    borderRadius:30,
-    overflow:'hidden',
-    backgroundColor:'green',
-    justifyContent:'center',
-
-  },
-  btnText: {
-    textAlign :'center',
-  },
-});
+export default App;
