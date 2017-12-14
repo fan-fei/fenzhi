@@ -11,6 +11,8 @@ import {
   Text,
   View
 } from 'react-native';
+import MyButton from './src/component/MyButton'
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -20,24 +22,31 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          欢迎来到分治!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit App.js
+          拆解句子结构，实现分而治之！
         </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+
+        <MyButton text="登录" onPressMethod={()=>{alert("你点击了确定")}}></MyButton>
+        <MyButton text="注册" onPressMethod={()=>{alert("你点击了注册")}}></MyButton>
+
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+
+
+
   container: {
     flex: 1,
     justifyContent: 'center',
