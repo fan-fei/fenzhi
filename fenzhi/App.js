@@ -9,7 +9,9 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
+
 } from 'react-native';
 import MyButton from './src/component/MyButton'
 
@@ -37,6 +39,12 @@ export default class App extends Component<{}> {
         <MyButton text="登录" onPressMethod={()=>{alert("你点击了确定")}}></MyButton>
         <MyButton text="注册" onPressMethod={()=>{alert("你点击了注册")}}></MyButton>
 
+        <TouchableOpacity
+          style = {styles.btn}
+          onPress={()=>{alert("你点击了主页")}}>
+          <Text style ={{textAlign:"center"}}>主页</Text>
+        </TouchableOpacity>
+
 
       </View>
     );
@@ -62,5 +70,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  btn: {
+    width:120,
+    height:40,
+    borderRadius:30,
+    overflow:'hidden',
+    backgroundColor:'green',
+    justifyContent:'center',
+
+  },
+  btnText: {
+    textAlign :'center',
   },
 });
