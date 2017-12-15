@@ -40,6 +40,25 @@ export default class FirstScreen extends Component<{}> {
 
     const {navigate} = this.props.navigation;
 
+
+    var promise = new Promise((resolve, reject) =>{
+
+      var data = fetch('https://facebook.github.io/react-native/movies.json')
+        .then(response => response.json())
+        .then(responseJson => {
+          return responseJson;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
+      if(true){
+        resolve(data);
+      }else{
+        reject(error);
+      }
+    });
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -51,6 +70,7 @@ export default class FirstScreen extends Component<{}> {
 
         <MyButton text="登录" onPressMethod={()=>{alert("你点击了确定")}}></MyButton>
         <MyButton text="注册" onPressMethod={()=>{alert("你点击了注册")}}></MyButton>
+        <MyButton text="post请求" onPressMethod={()=>{promise.then((data)=>{alert (data)},(error)=>{alert (error.message) })}}></MyButton>
 
         <TouchableOpacity
           style = {styles.btn}
@@ -62,7 +82,14 @@ export default class FirstScreen extends Component<{}> {
       </View>
     );
   }
+
+
+
 }
+
+
+
+
 
 const styles = StyleSheet.create({
 
