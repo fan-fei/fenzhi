@@ -1,5 +1,5 @@
 /**
- * Sample React Native App
+ * Sample React Native Screen
  * https://github.com/facebook/react-native
  * @flow
  */
@@ -13,9 +13,9 @@ import {
   TouchableOpacity
 
 } from 'react-native';
-import MyButton from './src/component/MyButton'
-import FirstScreen from './src/component/FirstScreen'
-import SecondScreen from './src/component/SecondScreen'
+import MyButton from './MyButton'
+import FirstScreen from './FirstScreen'
+import SecondScreen from './SecondScreen'
 
 import {StackNavigator} from 'react-navigation'
 
@@ -28,11 +28,11 @@ const instructions = Platform.select({
 });
 
 
-const App = StackNavigator(
+const Screen = StackNavigator(
   {
     First :{screen:FirstScreen},
     Second :{screen:SecondScreen}
   }
 )
 
-export default App;
+export default Screen;
