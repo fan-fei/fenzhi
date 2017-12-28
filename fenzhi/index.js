@@ -1,6 +1,4 @@
 import { AppRegistry } from 'react-native';
-// import App from './App';
-import Screen from './src/sample01/Screen';
+import App from './src/sample06/TextInputSample';
 
-// AppRegistry.registerComponent('fenzhi', () => App);
-AppRegistry.registerComponent('fenzhi', () => Screen);
+AppRegistry.registerComponent('fenzhi', () => App);
