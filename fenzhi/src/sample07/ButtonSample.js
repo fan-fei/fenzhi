@@ -12,7 +12,8 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
+  TouchableHighlight
 
 } from 'react-native';
 import Button from 'react-native-button';
@@ -51,7 +52,7 @@ export default class ButtonSample extends Component {
                 this.setState(
                   ()=>{
                     return {
-                      typedText:'you clicked button'
+                      typedText:'you clicked the button'
                     };
                   }
                 );
@@ -73,6 +74,30 @@ export default class ButtonSample extends Component {
             注册
           </Button>
           <Text>{this.state.typedText}</Text>
+
+          <TouchableHighlight><Text style={
+            {
+              color:'white',
+              backgroundColor:'red',
+              width:200,
+              height:40,
+              textAlign:'center',
+              padding:10
+            }
+          }>TouchableHighlight</Text></TouchableHighlight>
+
+          <TouchableOpacity
+            activeOpacity={0.5}
+            ><Text style={
+            {
+              color:'white',
+              backgroundColor:'green',
+              width:200,
+              height:40,
+              textAlign:'center',
+              padding:10
+            }
+          }>TouchableOpacity</Text></TouchableOpacity>
       </View>
 
 
