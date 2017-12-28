@@ -11,7 +11,8 @@ import {
   Text,
   TextInput,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard
 
 } from 'react-native';
 export default class TextInputSample extends Component {
@@ -22,6 +23,37 @@ export default class TextInputSample extends Component {
     };
   }
 
+  componentWillMount () {
+    this.abc=Keyboard.addListener('keyboardDidShow',
+      ()=>{
+          this.setState(
+              ()=>{
+                return {
+                  typedText:"keboard is shown"
+                }
+              }
+          );
+      }
+    );
+
+    this.def=Keyboard.addListener('keyboardDidHide',
+      ()=>{
+          this.setState(
+              ()=>{
+                return {
+                  typedText:"keboard is hidden"
+                }
+              }
+          );
+      }
+    );
+
+  }
+
+  componentWillUnmount(){
+    this.abc.remove();
+    this.def.remove();
+  }
 
   render() {
     return (
@@ -49,6 +81,20 @@ export default class TextInputSample extends Component {
           >
           </TextInput>
           <Text>{this.state.typedText}</Text>
+
+          <TextInput style={{
+            margin:20,
+            height:80,
+            borderColor:"gray",
+            borderWidth:2
+          }}
+          keyboardType='email-address'
+          placeholder='ender the password'
+          placeholderTextColor='red'
+          secureTextEntry={true}
+          // returnKeyType='done'
+          >
+          </TextInput>
       </View>
     );
   }
