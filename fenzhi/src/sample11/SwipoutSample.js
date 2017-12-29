@@ -73,7 +73,10 @@ export default class SwipoutSample extends Component {
               'Are you want to delete this item?',
               [
                 {text:'NO', onPress:()=>{console.log('no pressed')},style:'cancel'},
-                {text:'YES', onPress:()=>{console.log('yes pressed')}}
+                {text:'YES', onPress:()=>{
+                  data.splice(this.props.index,1);
+                  alert(this.props.index);
+                }}
               ],
               {'cancelable':true}
 
@@ -87,12 +90,13 @@ export default class SwipoutSample extends Component {
 
     return (
 
-      <Swipeout {...swipeSettings}>
+
             <View style={{flex :1, marginTop: 20}}>
               <FlatList
                 data={data}
                 renderItem={(items)=>{
                   return (
+                    <Swipeout   {...swipeSettings}>
                     <View
                       style={{
                         flex:1,
@@ -108,13 +112,16 @@ export default class SwipoutSample extends Component {
                           <Text style={{padding: 20}}>{items.item.name}</Text>
                           <Text style={{padding: 20}}>{items.item.description}</Text>
                         </View>
-                  </View>);
+                  </View>
+                </Swipeout>
+                );
+
 
                 }}>
 
               </FlatList>
             </View>
-      </Swipeout>
+
     );
   }
 

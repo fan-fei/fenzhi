@@ -56,6 +56,9 @@ export default class FlatViewSample extends Component {
 
     return (
       <View style={{flex :1, marginTop: 20}}>
+        <View style={{height: 100,backgroundColor: 'black'}}>
+
+        </View>
         <FlatList
           data={data}
           renderItem={(items)=>{
