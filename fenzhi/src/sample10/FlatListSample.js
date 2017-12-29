@@ -68,7 +68,7 @@ export default class FlatViewSample extends Component {
               >
 
                     <Image
-                      style={{width: 100,height: 100}}
+                      style={{width: 100,height: 100, marginTop: 5}}
                       source={require('../sample08/test.jpg')}></Image>
 
 
