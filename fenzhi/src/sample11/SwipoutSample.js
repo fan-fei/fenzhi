@@ -42,12 +42,6 @@ let data = [
       "description":"description3",
       "urlAddress":"http://img0.imgtn.bdimg.com/it/u=3646823212,2542355244&fm=27&gp=0.jpg"
   },
-  {
-      "key":"4",
-      "name":"name4",
-      "description":"description4",
-      "urlAddress":"http://img0.imgtn.bdimg.com/it/u=3646823212,2542355244&fm=27&gp=0.jpg"
-  }
 ];
 
 export default class SwipoutSample extends Component {
@@ -57,46 +51,53 @@ export default class SwipoutSample extends Component {
 
   render() {
 
-    const swipeSettings = {
-      autoClose:true,
-      onClose:()=>{
-
-      },
-      onOpen:()=>{
-
-      },
-      right:[
-        {
-          onPress: () => {
-            Alert.alert(
-              'Alert',
-              'Are you want to delete this item?',
-              [
-                {text:'NO', onPress:()=>{console.log('no pressed')},style:'cancel'},
-                {text:'YES', onPress:()=>{
-                  data.splice(this.props.index,1);
-                  alert(this.props.index);
-                }}
-              ],
-              {'cancelable':true}
-
-            );
-          },
-          text:'Delete',
-          type:'delete'
-        }
-      ]
-    };
 
     return (
-
-
             <View style={{flex :1, marginTop: 20}}>
               <FlatList
                 data={data}
                 renderItem={(items)=>{
+
+
+                  const swipeSettings = {
+                    autoClose:true,
+
+                    onClose:()=>{
+                    },
+
+                    onOpen:()=>{
+
+                    },
+
+                    right:[
+                      {
+                        onPress: () => {
+                          Alert.alert(
+                            'Alert',
+                            'Are you want to delete this item?',
+                            [
+                              {text:'NO', onPress:()=>{console.log('no pressed')},style:'cancel'},
+                              {text:'YES', onPress:()=>{
+                                  data.splice(items.index,1);
+                                  // alert(JSON.stringify(data))
+                                }
+                              }
+                            ],
+                            {'cancelable':true}
+
+                          );
+                        },
+                        text:'Delete',
+                        type:'delete'
+                      }
+                    ]
+                  };
+
+
+
                   return (
-                    <Swipeout   {...swipeSettings}>
+
+                    <Swipeout   {...swipeSettings} >
                     <View
                       style={{
                         flex:1,
@@ -109,9 +110,9 @@ export default class SwipoutSample extends Component {
 
 
                         <View>
-                          <Text style={{padding: 20}}>{items.item.name}</Text>
-                          <Text style={{padding: 20}}>{items.item.description}</Text>
-                        </View>
+                          <Text style={{padding: 10}}>{items.index+1}</Text>
+                          <Text style={{padding: 10}}>{items.item.name}</Text>
+                          <Text style={{padding: 10}}>{items.item.description}</Text></View>
                   </View>
                 </Swipeout>
                 );
